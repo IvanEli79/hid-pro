@@ -1,0 +1,13 @@
+---
+import ListItem from "./ListItem.astro";
+
+export interface Props{
+    href:string,
+    text:string,
+}
+
+const { href, text } = Astro.props
+---
+<ListItem>
+    <a href={href} class="px-3 w-full block text-center whitespace-nowrap">{text}</a>
+</ListItem>

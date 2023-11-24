@@ -1,0 +1,50 @@
+---
+import Container from "./Container.astro";
+
+export interface Props {
+    idName: string;
+    className?: string;
+    variant?: "screen" | "content" | "last";
+    containerIdName?: string;
+    containerClass?: string;
+    containerLgVariant?: "normal" | "reverse";
+}
+
+const {
+    idName,
+    className,
+    variant,
+    containerIdName,
+    containerClass,
+    containerLgVariant,
+} = Astro.props;
+
+const getThemeStyle = (variant?: "screen"|"content"|"last") => {
+    if (variant === "last") { return ("min-h-[80vh] max-h-[90vh]"); }
+
+    if (variant === "content") { return ("min-h-max lg:max-h-max"); }
+
+    return "min-h-screen lg:h-screen";
+};
+---
+
+<section
+    id={idName! ? idName : null}
+    data-section
+    class={`relative flex 
+            ${getThemeStyle(variant)} 
+            min-w-screen lg:w-screen
+            lg:overflow-hidden
+            pt-28 
+            ${className! ? className : ""}`}
+>
+    <slot name="uncontained" />
+
+    <Container
+        idName={containerIdName}
+        className={containerClass}
+        lgVariant={containerLgVariant}
+    >
+        <slot />
+    </Container>
+</section>

@@ -1,0 +1,67 @@
+---
+import Header from "/src/layouts/Header.astro";
+
+import Button from "/src/components/shared/HeaderBtn.astro";
+import NavItem from "/src/components/shared/Navitem.astro";
+
+export interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+
+const navItems = [
+    {
+        href: "#",
+        text: "Inicio",
+    },
+    {
+        href: "#about",
+        text: "Nosotros",
+    },
+    {
+        href: "#portfolio",
+        text: "Servicios",
+    },
+    {
+        href: "#skills",
+        text: "Tecnologías",
+    },
+    {
+        href: "#features",
+        text: "Atributos",
+    },
+];
+---
+
+<Header lang={lang}>
+
+    <ul
+        slot="menu"
+        class="flex flex-col lg:flex-row
+               border-t border-box-border lg:border-t-0
+               px-6 lg:px-0
+               pt-6 lg:pt-0
+               gap-y-4
+               lg:gap-x-2 xl:gap-x-4 2xl:gap-x-10
+               text-heading-2
+               text-base xl:text-lg 2xl:text-xl
+               w-full
+               items-center lg:justify-center">
+        {
+            navItems.map((item) => {
+                return <NavItem {...item} />;
+            })
+        }
+    </ul>
+
+    
+
+    <Button
+        slot="btnContact"
+        href="#cta"
+        text="Contáctenos"
+        className="flex justify-center w-full sm:w-max xl:text-xl"
+    />
+
+</Header>

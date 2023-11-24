@@ -1,0 +1,17 @@
+---
+import Section from "../components/shared/Section.astro";
+import Container from "../components/shared/Container.astro";
+---
+
+<!-- SECTION STATS -->
+<Section idName="stats" variant="content">
+  <Container className="mx-auto p-5 sm:p-6 py-6 sm:py-8 max-w-5xl rounded-3xl bg-box-bg border border-box-border shadow-lg shadow-box-shadow md:divide-x divide-box-border grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 md:gap-6 lg:gap-12">
+    <slot name="created-projects" />
+
+    <slot name="projects" />
+
+    <slot name="happy-clients" />
+
+    <slot name="years" />
+  </Container>
+</Section>

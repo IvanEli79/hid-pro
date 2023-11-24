@@ -1,0 +1,30 @@
+---
+import Skills from "/src/layouts/Skills.astro";
+
+import Strip from "/src/components/shared/Strip.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+---
+
+<Skills>
+    
+    <Strip slot="strip" variant="no-flex" className="w-full lg:w-1/5 lg:max-h-screen lg:h-screen">
+        <Subtitle>Our Stack</Subtitle>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">
+            Some of the different technologies we currently use.
+        </Paragraph>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">
+            Want to know more about these? <br />
+        </Paragraph>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">    
+            Select one from the grid. Maybe Wikipedia knows about it! <br />
+        </Paragraph>
+        
+        <LnkButton href="#features" text="Why to choose us" />
+    </Strip>
+    
+</Skills>

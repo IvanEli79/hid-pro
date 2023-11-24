@@ -1,0 +1,13 @@
+---
+import ListItem from "./ListItem.astro";
+
+export interface Props {
+    href:string;
+    text:string;
+}
+
+const { href, text } = Astro.props;
+---
+<ListItem>
+    <a href={href} class="py-2 w-full" set:html={text} />
+</ListItem>

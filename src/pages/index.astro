@@ -1,0 +1,41 @@
+---
+import Layout from "/src/layouts/Layout.astro";
+
+import Head from "./head.astro";
+import Foot from "./foot.astro";
+
+import Home from "./home.astro";
+import Statistics from "./statistics.astro";
+import Clients from "./clients.astro";
+import AboutUs from "./about-us.astro";
+import Services from "./services.astro";
+import Technologies from "./technologies.astro";
+import Attributes from "./attributes.astro";
+import ContactUs from "./contact-us.astro";
+
+const lang = "es";
+const company = "HID-Prology";
+const description = "Servicios de Consultoría de TI y Desarrollo de Software";
+const keywords = "IT Consulting Services, Servicios de Consultoría de TI, Software Development, Desarrollo de Software";
+---
+
+<Layout title={company}
+		lang={lang}
+		description={description}
+		keywords={keywords}>
+
+	<Head lang={lang} slot="header" />
+
+	<Home />
+	<!--
+	<Statistics />
+	<Clients />
+	-->
+	<AboutUs />
+	<Services />
+	<Technologies />
+	<Attributes />
+	<ContactUs />
+	
+	<Foot company={company} slot="footer" />
+</Layout>

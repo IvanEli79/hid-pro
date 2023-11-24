@@ -1,0 +1,50 @@
+---
+export interface Props {
+    idName?: string;
+    className?: string;
+}
+const { idName, className } = Astro.props;
+---
+<div
+    id={idName! ? idName : null}
+    data-flipcard
+    class=`w-full
+            min-h-full h-full
+            overflow-hidden
+            ${className! ? className : ""}`
+>
+    <div
+        data-card
+        onclick="this.classList.toggle('is-flipped')"
+        class="min-w-full w-full
+                min-h-full h-full"
+    >
+        <slot />
+    </div>
+</div>
+
+<style is:global>
+    [data-flipcard] {
+        perspective: 1000px;
+    }
+
+    [data-card] {
+        display: grid;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transform-origin: center right;
+        transition: transform 1s;
+    }
+
+    [data-card] > * {
+        grid-area: 1 / 1;
+    }
+
+    [data-card].is-flipped {
+        transform: translateX(-100%) rotateY(-180deg);
+    }
+
+    [data-card] [data-cardface] {
+        align-self: self-start;
+    }
+</style>

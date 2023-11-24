@@ -1,0 +1,41 @@
+---
+import InfoHeader from "../blocks/InfoHeader.astro";
+import Paragraph from "../shared/Paragraph.astro";
+
+export interface Props {
+    title: string;
+    icon?: string;
+}
+
+const { title, icon } = Astro.props;
+---
+
+<div data-swiper-slide 
+     class="swiper-slide 
+            w-full h-[auto!important]
+            rounded-3xl
+            border border-box-border bg-box-bg
+            shadow-lg shadow-box-shadow
+            overflow-hidden">
+
+    <div data-swiper-container
+         class="swiper-container
+                relative 
+                flex-1
+                flex flex-col 
+                w-full h-full
+                p-5 sm:p-6 lg:p-7">
+        
+        <InfoHeader title={title} icon={icon} iconBgVariant="tl" />
+
+        <div class="flex-1 flex w-full h-full items-center align-middle justify-center my-auto">
+            <Paragraph variant="small">
+                <slot />
+            </Paragraph>
+        </div>
+
+    </div>
+
+    <span class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"></span>
+
+</div>

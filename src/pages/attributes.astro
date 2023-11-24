@@ -1,0 +1,76 @@
+---
+import Features from "/src/layouts/Features.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Title from "/src/components/shared/Title.astro";
+import HLText from "/src/components/shared/HLText.astro";
+import FeatureSwiper from "/src/components/shared/FeatureSwiper.astro";
+import Feature from "/src/components/cards/Feature.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import Checkmark from "/src/components/shared/Checkmark.astro";
+---
+
+<Features id="features">
+    <Title>
+        Ayudamos a su negocio,
+        <HLText>Simplificando y Mejorando</HLText>
+         sus procesos con la <HLText className="bg-gradient-to-tl">Tecnología</HLText> (correcta).
+    </Title>
+
+    <Paragraph variant="mid">
+        Nuestro equipo de analistas, diseñadores e ingenieros le ayudarán a 
+        conceptualizar, desarrollar e implementar las soluciones más apropiadas
+        para sus requerimientos de TI.
+    </Paragraph>
+
+    <FeatureSwiper>
+        <Feature title="Enfoque basado en el Cliente" icon="user-check.svg">
+            <Checkmark/>Dedicación para entender e identificar las necesidades del cliente.<br/>
+            <Checkmark/>Compromiso con la satisfacción a largo plazo con nuestro cliente.<br/>
+            <Checkmark/>Capacidad de personalizar nuestras soluciones.<br/>
+            <Checkmark/>Retroalimentación efectiva.
+        </Feature>
+    
+        <Feature title="Experiencia e Innovación combinadas" icon="tools.svg">
+            La habilidad de nuestro equipo se basa en su experiencia en la industria de TI,
+            enfocada en el desarrollo de software y en su perspectiva de innovación con 
+            tecnologías de vanguardia.<br/>
+            <br/>
+            <strong>La Experiencia se complementa con Innovación y Nuevas Tecnologías.</strong>
+        </Feature>
+    
+        <Feature title="Perspectiva basada en Datos" icon="viewfinder.svg">
+            Tenemos la habilidad de extraer información relevante de sus datos y
+            aprovecharla para mejorar sus soluciones de software.<br/>
+            <br/>
+            <Checkmark/>Abstracción del comportamiento de Usuario.<br/>
+            <Checkmark/>Capacidad de Análisis de Datos.<br/>
+            <Checkmark/>Toma de decisiones más precisas.
+        </Feature>
+
+        <Feature title="Privacidad" icon="shield-lock.svg">
+            Nuestro compromiso de No-Divulgar ningún dato sensible de nuestros clientes 
+            al cual tengamos acceso.<br/>
+            <br/>
+            Toda negociación, colaboración o transacción es directamente entre nosotros y 
+            nuestros clientes, sin la participación de ningún tercero.
+        </Feature>
+    
+        <Feature title="Confiabilidad" icon="360-view.svg">
+            Podemos confiar en todas nuestras soluciones de software: <br/><br/>
+            <Checkmark/>Diseños robustos con Metodologías comprobadas,<br/>
+            <Checkmark/>Procedimientos formales de pruebas y<br/>
+            <Checkmark/>Nuestro compromiso de entrega en tiempo y forma.
+        </Feature>
+
+        <Feature title="Todo en su beneficio" icon="thumb-up.svg">
+            <Checkmark/>Precios Competitivos del Mercado. <br/>
+            <Checkmark/>Soluciones de Software al Costo. <br/>
+            <Checkmark/>Compromiso con la Satisfacción del Cliente.<br/>
+            <br/>
+            Un Socio de Confianza que le puede otorgar un valor redituable a usted y a su negocio.
+        </Feature>
+    <!-- -->
+    </FeatureSwiper>
+
+    <LnkButton href="#cta" text="Contáctenos" />
+</Features>

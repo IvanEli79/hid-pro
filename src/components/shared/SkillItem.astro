@@ -1,0 +1,49 @@
+---
+import Modal from "../cards/Modal.astro";
+
+export interface Props {
+    icon: string;
+    text: string;
+    wiki: string | undefined;
+    pgId: string | undefined | null;
+    actv: boolean;
+    indx: number;
+}
+
+const { icon, text, wiki, pgId, actv, indx } = Astro.props;
+const { default: innerHTML } = await import(
+    `../../assets/logos/${icon.replace(".svg", "")}.svg?raw`
+);
+const trigger = `wiki_${indx}`;
+---
+
+<div
+    id={trigger}
+    data-skill-item
+    class="skill-item
+            rounded-xl
+            aspect-square
+            
+            bg-gray-300 dark:bg-gray-600
+
+            text-heading-1
+            max-w-16 lg:max-w-24
+            p-4
+            group
+            content-center
+            align-middle"
+>
+    <span
+        class="absolute
+                 rounded-md
+                 text-sm text-gray-100
+                 opacity-0
+                 px-2
+                 group-hover:opacity-100
+                 transition-opacity bg-gray-800"
+        >{text}</span>
+
+    <Fragment set:html={innerHTML} />
+</div>
+
+{actv && pgId! && trigger! && trigger !== "" && <Modal triggerId={trigger} title={text} icon={icon} wiki={wiki} pageId={pgId} />}

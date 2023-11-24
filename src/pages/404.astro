@@ -1,0 +1,36 @@
+---
+import Layout from "/src/layouts/Layout.astro";
+
+import HeaderError from "/src/layouts/HeaderError.astro";
+
+import Section from "/src/components/shared/Section.astro";
+import Container from "/src/components/shared/Container.astro";
+import Title from "/src/components/shared/Title.astro";
+import Subcontainer from "/src/components/shared/Subcontainer.astro";
+
+const lang = "es";
+const company = "HID-Prology";
+const description = "Servicios de Consultoría de TI y Desarrollo de Software";
+const keywords = "IT Consulting Services, Servicios de Consultoría de TI, Software Development, Desarrollo de Software";
+---
+
+<Layout title={company}
+		lang={lang}
+		description={description}
+		keywords={keywords}>
+
+	<HeaderError lang={lang} slot="header" />
+
+    <Section className="bg-[url('/images/explosion.png')] bg-no-repeat bg-fixed bg-center">
+        <Container className="max-h-[85vh]">
+            <Subcontainer>
+                <Title className="text-center [text-shadow:2px_2px_2px_var(--tw-shadow-color)] shadow-green-300 dark:shadow-green-700">
+                    404 <br/> 
+                    <br/> 
+                    &#127474;&#127485; No lo encontramos.<br/>
+                    &#127482;&#127480; Not Found.
+                </Title>
+            </Subcontainer>
+        </Container>
+    </Section>
+</Layout>

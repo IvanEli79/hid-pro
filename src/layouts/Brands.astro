@@ -1,0 +1,11 @@
+---
+import Section from "../components/shared/Section.astro";
+import Container from "../components/shared/Container.astro";
+---
+
+<Section idName="brands" variant="content">
+    <Container className="space-y-8">
+        <slot name="title" />
+        <slot name="companies" />
+    </Container>
+</Section>

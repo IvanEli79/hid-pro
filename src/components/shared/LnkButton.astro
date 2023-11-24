@@ -1,0 +1,39 @@
+---
+export interface Props {
+    href: string;
+    text: string;
+    className?: string;
+}
+
+const { href, text, className } = Astro.props;
+---
+
+<div class="relative flex-1 
+            hidden lg:flex
+            justify-center">
+
+    <a
+        href={href}
+        class={`px-6 py-3 
+           rounded-full
+           outline-none 
+           relative 
+           overflow-hidden 
+           border 
+           duration-300 ease-linear
+           after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554]
+           bg-primary border-transparent hover:border-[#172554]
+           hover:after:opacity-100 hover:after:scale-[2.5] 
+           justify-center 
+           w-full sm:w-max 
+           my-2 sm:my-4 lg:my-6
+           text-base sm:text-sm lg:text-lg xl:text-xl
+           ${className}`}>
+
+        <span class="relative text-white z-10">
+            <strong>{text}</strong>
+        </span>
+
+    </a>
+
+</div>

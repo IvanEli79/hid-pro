@@ -1,0 +1,78 @@
+---
+import Features from "/src/layouts/Features.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Title from "/src/components/shared/Title.astro";
+import HLText from "/src/components/shared/HLText.astro";
+import FeatureSwiper from "/src/components/shared/FeatureSwiper.astro";
+import Feature from "/src/components/cards/Feature.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import Checkmark from "/src/components/shared/Checkmark.astro";
+---
+
+<Features id="features">
+    <Title>
+        We help your business,
+        <HLText>Simplifying & Enhancing</HLText>
+         your processes with (the right)
+        <HLText className="bg-gradient-to-tl">Technology</HLText>
+    </Title>
+
+    <Paragraph variant="mid">
+        Our talented team of analysts, designers and engineers will help you
+        conceptualize, develop and implement the most appropriate solutions for
+        your IT requirements.
+    </Paragraph>
+
+    <FeatureSwiper>
+        <Feature title="Custom-centric Approach" icon="user-check.svg">
+            <Checkmark/>Our Dedication to understand and address our customer needs.<br/>
+            <Checkmark/>Commitment to long-term customer satisfaction.<br/>
+            <Checkmark/>Willingness to customize solutions.<br/>
+            <Checkmark/>Responsiveness to feedback.
+        </Feature>
+    
+        <Feature title="Experience & Innovation combined" icon="tools.svg">
+            
+            Our team's expertise is based on it's experience in the IT industry, 
+            focused on software development, with the innovation perspective for
+            cutting-edge technologies.<br/>
+            <br/>
+            <strong>Experience is complemented with Innovation & New Technologies.</strong>
+        </Feature>
+    
+        <Feature title="Data-driven Insights" icon="viewfinder.svg">
+            We got the ability to extract valuable insights from your data and
+            use them to improve your software solutions.<br/>
+            <br/>
+            <Checkmark/>Data analytics capabilities.<br/>
+            <Checkmark/>User behavior understanding.<br/>
+            <Checkmark/>More accurate decision-making.
+        </Feature>
+
+        <Feature title="Privacy" icon="shield-lock.svg">
+            Our Non-disclosure commitment, in order to protect any sensitive
+            customer data in our possesion.<br/>
+            <br/>
+            All negotiations and transactions are direct between us and our clients 
+            without any third party as intermediary.
+        </Feature>
+    
+        <Feature title="Reliability" icon="360-view.svg">
+            We are confident in our software solutions: <br/><br/>
+            <Checkmark/>Robust designs with proven Methodologies,<br/>
+            <Checkmark/>Formal testing procedures &<br/>
+            <Checkmark/>On-time delivery commitment.
+        </Feature>
+
+        <Feature title="All in your bennefit" icon="thumb-up.svg">
+            <Checkmark/>Competitive Market Pricing. <br/>
+            <Checkmark/>Cost-effective software solutions. <br/>
+            <Checkmark/>Commitment to customer satisfaction.<br/>
+            <br/>
+            Your trusted partner that can deliver significant value to you and your business.
+        </Feature>
+    <!-- -->
+    </FeatureSwiper>
+
+    <LnkButton href="#cta" text="Contact Us" />
+</Features>

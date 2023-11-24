@@ -1,0 +1,79 @@
+---
+import svgLogo from "/logos/hid.svg?raw";
+import Container from "../components/shared/Container.astro";
+---
+
+<header data-header
+        class="fixed inset-x-0 top-0 z-50 py-6 w-full max-h-[100px]">
+
+    <Container>
+
+        <nav data-nav class="relative flex justify-between gap-2 w-full">
+
+            <div data-nav-logo class="min-w-max inline-flex relative">
+                <a href="/" class="relative flex items-center">
+                    <div class="relative
+                               overflow-hidden 
+                               flex
+                               w-[108px] max-w-[108px]
+                               h-[64px] max-h-[64px]
+                               aspect-auto
+                               stroke-heading-1
+                               fill-heading-1">
+                        <Fragment set:html={svgLogo} />
+                    </div>
+                </a>
+            </div>
+            
+        </nav>
+    </Container>
+</header>
+
+<script>
+    const header = document.querySelector("[data-header]");
+    /* Validación por si se entra directo a una seccion */
+    if (window.scrollY >= 100) {
+        header!.classList.add("active");
+    } else {
+        header!.classList.remove("active");
+    }
+    /* Validación por scroll */
+    window.addEventListener("scroll", function () {
+        if (window.scrollY >= 100) {
+            header!.classList.add("active");
+        } else {
+            header!.classList.remove("active");
+        }
+    });
+</script>
+
+<script>
+    const toggleLangMenu = document.querySelector(
+        "[data-toggle-lang]",
+    ) as HTMLButtonElement;
+    const langMenu = document.querySelector("[data-lang]") as HTMLDivElement;
+
+    if (toggleLangMenu) {
+        toggleLangMenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (langMenu) {
+                if (langMenu.classList.contains("hidden")) {
+                    langMenu.classList.remove("hidden");
+                } else {
+                    langMenu.classList.add("hidden");
+                }
+            }
+        });
+    }
+</script>
+
+<style>
+    header {
+        background-color: transparent;
+        transition: 0.45s cubic-bezier(0.33, 0.85, 0.56, 1.02);
+    }
+    header.active {
+        background-color: var(--color-bg);
+        transition-duration: 0.35s;
+    }
+</style>

@@ -1,0 +1,340 @@
+---
+import svgWikipedia from "../../assets/icons/wikipedia.svg?raw";
+import svgClose from "../../assets/icons/square-x.svg?raw";
+
+interface Props {
+    triggerId: string;
+    title: string;
+    icon: string;
+    wiki?: string;
+    pageId?: string;
+    closeText?: string;
+    children?: HTMLElement | HTMLElement[];
+}
+
+const { triggerId, title, icon, wiki, closeText = "X", pageId } = Astro.props;
+
+const wikiAPIurl = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=${pageId}`;
+
+const { default: innerHTMLicon } = await import(`../../assets/logos/${icon.replace(".svg", "")}.svg?raw`);
+---
+
+<dialog class="modal rounded-xl bg-gray-300 dark:bg-gray-500 lg:max-w-[75vw]" aria-labelledby={triggerId}>
+    <div class="modal__inner flex flex-col gap-5 p-6 scroll">
+        <div class="modal__header flex-none flex flex-row gap-4 items-center align-middle">
+            <div class="flex-none rounded-xl bg-indigo-400 dark:bg-green-500 p-3 text-heading-1 w-max h-max">
+                <Fragment set:html={svgWikipedia} />
+            </div>
+
+            <div class="flex-1 text-base md:text-xl font-semibold text-heading-2 mt-2 mb-4">
+                <h2 class="whitespace-nowrap">
+                    Wikipedia: {title}
+                </h2>
+            </div>
+
+            <div class="modal__close flex-none flex justify-end">
+                <button class="flex-none rounded-xl outline-none border-none bg-indigo-400 dark:bg-green-500 p-3 text-heading-1 w-max h-max" tabindex="0">
+                    <Fragment set:html={svgClose} alt={closeText} />
+                </button>
+            </div>
+        </div>
+
+        <slot />
+
+        <div class="modal__content flex-auto gap-5 overflow-y-auto text-heading-2" data-value={wikiAPIurl} data-page={pageId}>
+            
+            <div class="flex-none float-left rounded-xl aspect-square text-heading-1 p-2 min-w-[48px] mr-3 lg:mr-5">
+                <Fragment set:html={innerHTMLicon} />
+            </div>
+
+            
+            <p class="modal__wiki "></p>
+        </div>
+    </div>
+</dialog>
+
+<script>
+    const timeout = 2000;
+
+    async function fetchExtractD(modal: HTMLDialogElement) {
+        const modalContent = modal.querySelector<HTMLDivElement>(".modal__content");
+        const modalWiki = modal.querySelector<HTMLDivElement>(".modal__wiki");
+
+        /* RHIE */ /*
+        modalWiki?.appendChild(document.createTextNode("Stack Overflow is a question-and-answer website for programmers. It is the flagship site of the Stack Exchange Network. It was created in 2008 by Jeff Atwood and Joel Spolsky. It features questions and answers on certain computer programming topics. It was created to be a more open alternative to earlier question and answer websites such as Experts-Exchange. Stack Overflow was sold to Prosus, a Netherlands-based consumer internet conglomerate, on 2 June 2021 for $1.8 billion.The website serves as a platform for users to ask and answer questions, and, through membership and active participation, to vote questions and answers up or down similar to Reddit and edit questions and answers in a fashion similar to a wiki. Users of Stack Overflow can earn reputation points and \"badges\"; for example, a person is awarded 10 reputation points for receiving an \"up\" vote on a question or an answer to a question, and can receive badges for their valued contributions, which represents a gamification of the traditional Q&A website. Users unlock new privileges with an increase in reputation like the ability to vote, comment, and even edit other people's posts.As of March 2022 Stack Overflow has over 20 million registered users, and has received over 24 million questions and 35 million answers. The site and similar programming question and answer sites have globally mostly replaced programming books for day-to-day programming reference in the 2000s, and today are an important part of computer programming. Based on the type of tags assigned to questions, the top eight most discussed topics on the site are: JavaScript, Java, C#, PHP, Android, Python, jQuery, and HTML."));
+
+        return;
+        /* */
+
+        if (modalWiki?.innerHTML) {
+            console.log("Modal-Wiki already got info.");
+            return;
+        }
+
+        const wikiURL = modalContent?.getAttribute("data-value");
+        const pageId = modalContent?.getAttribute("data-page");
+
+        if (wikiURL === null) {
+            console.log("WikiURL is null.");
+            return;
+        }
+        if (wikiURL === undefined) {
+            console.log("WikiURL is undefined.");
+            return;
+        }
+        if (wikiURL === "") {
+            console.log("WikiURL is empty.");
+            return;
+        }
+        if (pageId === null) {
+            console.log("PageID is null.");
+            return;
+        }
+        if (pageId === undefined) {
+            console.log("PageID is undefined.");
+            return;
+        }
+        if (pageId === "") {
+            console.log("PageID is empty.");
+            return;
+        }
+
+        const response = await fetch(wikiURL! ? wikiURL : "", { mode: "cors" });
+        if (response === null) {
+            console.log("Response is null.");
+            return;
+        }
+        if (response === undefined) {
+            console.log("Response is undefined.");
+            return;
+        }
+
+        const data = await response.json();
+        if (data === null) {
+            console.log("Data is null.");
+            return;
+        }
+        if (data === undefined) {
+            console.log("Data is undefined.");
+            return;
+        }
+
+        const query = data.query;
+        if (query === null) {
+            console.log("Query is null.");
+            return;
+        }
+        if (query === undefined) {
+            console.log("Query is undefined.");
+            return;
+        }
+
+        const pages = query.pages;
+        if (pages === null) {
+            console.log("Pages is null.");
+            return;
+        }
+        if (pages === undefined) {
+            console.log("Pages is undefined.");
+            return;
+        }
+
+        const extract = pages[pageId!].extract;
+        if (extract === null) {
+            console.log("Extract is null.");
+            return;
+        }
+        if (extract === undefined) {
+            console.log("Extract is undefined.");
+            return;
+        }
+        if (extract === "") {
+            console.log("Extract is empty.");
+            return;
+        }
+
+        var text = document.createTextNode(extract);
+
+        modalWiki?.appendChild(text);
+
+        return;
+    }
+
+    type FocusableElement =
+        | HTMLAnchorElement
+        | HTMLButtonElement
+        //| HTMLInputElement
+        //| HTMLTextAreaElement
+        //| HTMLSelectElement
+        //| HTMLDetailsElement
+        ; /* */
+
+    // variables
+    let modals = document.querySelectorAll<HTMLDialogElement>(".modal");
+
+    // abort controllers for global event listeners
+    let trapFocusController: AbortController | undefined;
+    let keydownController: AbortController | undefined;
+
+    const getKeyboardFocusableElements = (element: HTMLElement) => {
+        return [
+            ...element.querySelectorAll<FocusableElement>(
+                'a, button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])',
+            ),
+        ].filter((el) => !el.hasAttribute("disabled"));
+    };
+
+    const trapFocus = (event: KeyboardEvent, modal: HTMLDialogElement) => {
+        const focusables = getKeyboardFocusableElements(modal);
+
+        // These will not be undefined as a modal always has at least one <button>
+        const firstFocusable = focusables[0]!;
+        const lastFocusable = focusables[focusables.length - 1]!;
+
+        if (
+            document.activeElement === lastFocusable &&
+            event.key === "Tab" &&
+            !event.shiftKey
+        ) {
+            event.preventDefault();
+            firstFocusable.focus();
+        }
+
+        if (
+            document.activeElement === firstFocusable &&
+            event.key === "Tab" &&
+            event.shiftKey
+        ) {
+            event.preventDefault();
+            lastFocusable.focus();
+        }
+    };
+
+    const openModal = async (modal: HTMLDialogElement) => {
+        //const modalTitle = modal.querySelector("h2");
+        const modalInner = modal.querySelector<HTMLDivElement>(".modal__inner");
+
+        await fetchExtractD(modal);
+
+        modal.showModal();
+        //modalTitle!.focus();
+
+        trapFocusController = new AbortController();
+        keydownController = new AbortController();
+
+        document.addEventListener("keydown", (e) => trapFocus(e, modal), {
+            signal: trapFocusController.signal,
+        });
+
+        modal.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+            },
+            { signal: keydownController.signal },
+        );
+
+        modal.addEventListener(
+            "click",
+            () => {
+                closeModal();
+            },
+            { signal: keydownController.signal },
+        );
+
+        modalInner!.addEventListener(
+            "click",
+            (event) => {
+                event.stopPropagation();
+            },
+            { signal: keydownController.signal },
+        );
+    };
+
+    const closeModal = () => {
+        modals.forEach((modal) => {
+            const modalId = modal.getAttribute("aria-labelledby");
+            const modalTrigger = document.querySelector(
+                `#${modalId}`,
+            ) as HTMLButtonElement;
+            modalTrigger.focus({ preventScroll: true });
+            modal.close();
+            trapFocusController?.abort();
+            keydownController?.abort();
+        });
+    };
+
+    // execution
+    modals.forEach((modal) => {
+        const modalId = modal.getAttribute("aria-labelledby");
+        const modalCloseButton = modal.querySelector(".modal__close button");
+        const modalExit = modal.querySelectorAll(".modal__exit");
+        const modalTrigger = document.querySelector(`#${modalId}`);
+
+        if (!modalTrigger) {
+            throw new Error(`Trigger element not found. \n
+        Did you forget to add a trigger element with id: "${modalId}"?`);
+        }
+
+        modalTrigger.addEventListener("click", () =>
+            setTimeout(() => {
+                openModal(modal);
+            }, timeout),
+        );
+        modalCloseButton!.addEventListener("click", closeModal);
+        modalExit.forEach(element => {
+            element.addEventListener("click", closeModal);
+        });
+    });
+
+    /* RHIE */
+    //window.closeModal = closeModal;
+
+    // Listen for view transitions
+    document.addEventListener("astro:after-swap", () => {
+        // reset variables
+        modals = document.querySelectorAll<HTMLDialogElement>(".modal");
+
+        // execution
+        modals.forEach((modal) => {
+            const modalId = modal.getAttribute("aria-labelledby");
+            const modalCloseButton = modal.querySelector(".modal__close button",);
+            const modalExit = modal.querySelectorAll(".modal__exit",);
+            const modalTrigger = document.querySelector(`#${modalId}`);
+
+            if (!modalTrigger) {
+                throw new Error(`Trigger element not found. \n
+        Did you forget to add a trigger element with id: "${modalId}"?`);
+            }
+
+            modalTrigger.addEventListener("click", () =>
+                setTimeout(() => {
+                    openModal(modal);
+                }, timeout),
+            );
+            modalCloseButton!.addEventListener("click", closeModal);
+            modalExit.forEach(element => {
+                element.addEventListener("click", closeModal);
+            });
+        });
+    });
+</script>
+
+<style is:global>
+    /* Animation */
+    dialog[open],
+    dialog[open]::backdrop {
+        animation: fadein 0.3s ease-in-out;
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>

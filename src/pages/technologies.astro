@@ -1,0 +1,30 @@
+---
+import Skills from "/src/layouts/Skills.astro";
+
+import Strip from "/src/components/shared/Strip.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+---
+
+<Skills>
+    
+    <Strip slot="strip" variant="no-flex" className="w-full lg:w-1/5 lg:max-h-screen lg:h-screen">
+        <Subtitle>Nuestro Repertorio</Subtitle>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">
+            Algunas de las diferentes tecnologías que actualmente utilizamos. <br/>
+        </Paragraph>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">
+            ¿Quieres conocer más acerca de ellas?<br />
+        </Paragraph>
+        
+        <Paragraph variant="mid" className="lg:max-h-max lg:h-max">    
+            Selecciona una del tablero. <br/>¡Tal vez Wikipedia sepa de ella!<br />
+        </Paragraph>
+        
+        <LnkButton href="#features" text="Por Qué Escogernos" />
+    </Strip>
+    
+</Skills>

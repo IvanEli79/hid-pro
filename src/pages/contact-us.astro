@@ -1,0 +1,26 @@
+---
+import CTA from "/src/layouts/CallToAction.astro";
+
+import CntButton from "/src/components/shared/CntButton.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Title from "/src/components/shared/Title.astro";
+import HLText from "/src/components/shared/HLText.astro";
+
+const href = "mailto:one-evil@gmail.com";
+---
+
+<CTA id="cta">
+  <Title className="my-6 lg:my-14">
+    Empecemos a crear la <HLText>Tecnología</HLText> que su <HLText>Negocio</HLText> necesita.
+  </Title>
+
+  <Paragraph className="lg:text-center" variant="big">
+    Nuestra pasión por la tecnología será un gran recurso para usted.
+  </Paragraph>
+
+  <Paragraph className="lg:text-center" variant="big">
+    Permítanos conocer cuales son sus necesidades de tecnología, y estaremos comprometidos con su propio Éxito.
+  </Paragraph>
+
+  <CntButton href={href} text="Póngase en Contacto" className="mt-14 mb-7" />
+</CTA>

@@ -1,0 +1,24 @@
+---
+import Footer from "/src/layouts/Footer.astro";
+
+export interface Props {
+    company: string;
+}
+
+const { company } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<Footer>
+    <div slot="left" class="flex-1 text-left">
+        Hecho por <br class="lg:hidden" />
+        <a href="#" target="_blank" class="font-semibold">One-Evil-Developer</a>
+        &reg;
+    </div>
+
+    <div slot="right" class="flex-1 text-right">
+        {company} &copy; <span id="year">{currentYear}</span>. <br class="lg:hidden" />
+         Todos los derechos reservados.
+    </div>
+</Footer>

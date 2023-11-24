@@ -1,0 +1,20 @@
+<svg
+   viewBox="0 0 128 128"
+   id="svg1">
+   <defs
+      id="defs1" />
+   <path
+      fill="#68217a"
+      d="m 86.341155,2.3 21.980815,8.864394 V 82.295748 L 86.197018,91.23221 50.88358,56.134976 28.542426,73.503423 19.678032,69.035192 V 24.497018 l 8.864394,-4.252026 22.341155,17.512583 z M 28.542426,33.577617 v 27.02559 L 41.87505,46.910241 Z M 63.20725,46.910241 86.197018,64.99937 V 28.749045 Z"
+      id="path1"
+      style="stroke-width:0.720682" />
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:OpenSymbol;-inkscape-font-specification:OpenSymbol;letter-spacing:4px;fill:#68217a;stroke:#68217a;stroke-width:2.26772;stroke-linecap:round;fill-opacity:1;stroke-opacity:1"
+      x="18.523468"
+      y="114.80537"
+      id="text1"><tspan
+       id="tspan1"
+       x="18.523468"
+       y="114.80537">TFS</tspan></text>
+</svg>

@@ -1,0 +1,52 @@
+<div data-swiper 
+     class="swiper featureSwiper w-full h-full"
+     style={{"--swiper-pagination-bullet-inactive-color": "var(--heading-3)",
+             "--swiper-pagination-bullet-inactive-opacity": "0.7",
+            }}>
+    <div data-swiper-wrapper class="swiper-wrapper w-full h-full lg:max-w-xl">
+        <slot />
+    </div>
+    <div data-swiper-pagination class="swiper-pagination"></div>
+</div>
+
+<script>
+    import Swiper from "swiper";
+    import { Autoplay, Pagination } from "swiper/modules";
+    import "swiper/css/bundle";
+
+    Swiper.use([Pagination, Autoplay]);
+
+    const swiper = new Swiper(".featureSwiper", {
+        modules: [Pagination],
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        freeMode: false,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 1,
+            },
+            1024: {
+                slidesPerView: 1,
+            },
+            1280: {
+                slidesPerView: 1,
+            },
+            1536: {
+                slidesPerView: 2,
+            },
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
+        },
+    });
+</script>

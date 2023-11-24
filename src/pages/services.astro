@@ -1,0 +1,80 @@
+---
+import Portfolio from "/src/layouts/Portfolio.astro";
+
+import Service from "/src/components/cards/Service.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import ServiceSwiper from "/src/components/shared/ServiceSwiper.astro";
+import Strip from "/src/components/shared/Strip.astro";
+import Checkmark from "/src/components/shared/Checkmark.astro";
+---
+
+<Portfolio>
+
+    <Strip slot="strip" className="w-full lg:w-1/5">
+        <Subtitle>Nuestra Oferta</Subtitle>
+        <Paragraph variant="mid">Algunos de los servicios en nuestro catálogo que pueden ser 
+            de utilidad para su negocio.</Paragraph>
+        <LnkButton href="#skills" text="Cómo Lo Hacemos" />
+    </Strip>
+
+    <ServiceSwiper slot="swiper">
+        <Service title="Consultoría Estratégica de TI" icon="bulb.svg" image="services-01.jpeg">
+            Ofrecemos asistencia para diseñar planes estratégicos de TI basados en las
+            <strong>metas y objetivos de su organización</strong> 
+            con un enfoque basado soluciones prácticas y reales.<br/>
+             <br/>
+             <strong>¡Experiencia e Innovación a su alcance!</strong>
+        </Service>
+
+        <Service title="Software a la Medida" icon="needle-thread.svg" image="services-02.jpeg">
+            Creamos software para <strong>sus reglas de negocio particulares.</strong><br />
+            <br />
+             Para Dispositivos Móviles, PC de Escritorio o Servidores...<br />
+             Apps, Sitios Web o APIs...<br />
+             Ventas, Contabilidad, Administración, Logística, Almacén... <strong>¡A lo que se dedique!</strong>
+        </Service>
+
+        <Service title="Pruebas y Control de Calidad de Software" icon="test-pipe.svg" image="services-03.jpeg">
+            Estos servicios le permiten asegurar si un producto de software cumple
+            <strong>con sus requerimientos</strong> 
+            y pasan cualquier prueba que se le asigne.<br />
+            <br />
+            <strong>¡Una buena forma de mejorar la Calidad de sus Procesos!</strong>
+        </Service>
+
+        <Service title="Soporte Técnico" icon="first-aid-kit.svg" image="services-04.jpeg">
+            Podemos ofrecer soporte técnico a cualquier solución que hayamos implementado en su organización.<br />
+            <br />
+            Nadie mejor para hacer un cambio que los creadores originales.<br />
+            <br />
+            <strong>¡Una preocupación menos para usted!</strong>
+        </Service>
+
+        <Service title="Arquitectura de Software e Integración" icon="geometry.svg" image="services-05.jpeg">
+            Una propuesta estratégica para permitir el <strong>flujo de datos</strong>
+            entre diversos procesos, sistemas y aplicaciones en su empresa. <br />
+            <br />
+            <strong>Cuando sus sistemas realmente interactuan, ¡La eficiencia realmente mejora!</strong>
+        </Service>
+
+        <Service title="Subcontratación más allá de sus Fronteras" icon="globe-filled.svg" image="services-06.jpeg">
+            Es posible <strong>reducir costos</strong> al delegar sus necesidades de 
+            desarrollo de software a compañías extranjeras. <br />
+            <br />
+            Un abanico más amplio de Talento a un costo de fuerza laboral más efectivo. <br />
+            <br />
+            <strong>¡Somos su opción!</strong>
+        </Service>
+
+        <Service title="Asistencia a Agentes de TI Independientes" icon="user-plus.svg" image="services-07.jpeg">
+            <Checkmark/>¿Eres Freelancer y te gustaría ser considerado en nuestros proyectos? <br />
+            <Checkmark/>¿Necesitas ofrecer tus servicios a través de una compañía de TI?<br />
+            <Checkmark/>¿Ayuda para estimar o tarificar tu producto o servicio?<br />
+            <Checkmark/>¿Apoyo de un equipo de desarrollo?<br />
+            <strong>¡Déjanos conocer tu trabajo!</strong>
+        </Service>
+    </ServiceSwiper>
+
+</Portfolio>

@@ -1,0 +1,56 @@
+---
+import About from "/src/layouts/About.astro";
+
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import HLText from "/src/components/shared/HLText.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import FlipCard from "/src/components/cards/FlipCard.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import CardDeck from "/src/components/cards/CardDeck.astro";
+import CardFace from "/src/components/cards/CardFace.astro";
+---
+
+<About>
+    <Subtitle>
+        Somos un <HLText>Equipo</HLText> con varios años combinados de
+        <HLText className="bg-gradient-to-tl">Experiencia</HLText> en el Mundo de la  
+        <HLText className="bg-gradient-to-br">Tecnología</HLText>
+    </Subtitle>
+
+    <Paragraph variant="mid">
+        Nuestros <i>Analistas</i>, <i>Diseñadores</i> e <i>Ingenieros</i> tienen el conocimiento
+        no solo en diversas tecnologías (nuevas y heredadas) sino también en diversos 
+        giros de negocio, metodologías y tendencas de mercado, para
+        que <HLText><strong>Usted</strong></HLText> obtenga los mejores resultados.
+    </Paragraph>
+
+    <CardDeck>
+        <FlipCard>
+            <CardFace icon="mission.svg" title="Misión" variant="front">
+                Potenciar a empresas de cualquier tamaño o giro con
+                <strong>soluciones innovadoras de software</strong> 
+                que ayuden a nuestros clientes a alcanzar sus <strong>metas</strong>.
+            </CardFace>
+            <CardFace icon="objectives.svg" title="Objetivos" variant="back">
+                Ofrecer <strong>soluciones óptimas de software</strong>, con 
+                <i>calidad</i> y <i>alto rendimiento</i> cumpliendo con los  
+                <i>requerimientos</i> y <i>necesidades</i> de nuestro cliente.
+            </CardFace>
+        </FlipCard>
+        <FlipCard>
+            <CardFace icon="vision.svg" title="Visión" variant="front">
+                Ser un proveedor líder de <strong>soluciones de software</strong> que 
+                <strong>transformen</strong> la manera en que el negocio opera.
+            </CardFace>
+            <CardFace icon="values.svg" title="Valores" variant="back">
+                Fomentar <i>la Innovación</i>, <i>la Curiosidad</i>, <i>el Aprendizaje</i>, 
+                <i>la Colaboración</i>, <i>la Integridad</i> y <i>la Pasión</i> por lo que cada uno hace.
+                <br /><br />
+                <strong>El Talento</strong> sobrepasa las barreras de edad, género, raza, creencias
+                y orígenes.
+            </CardFace>
+        </FlipCard>
+    </CardDeck>
+
+    <LnkButton href="#portfolio" text="Qué Ofrecemos" />
+</About>

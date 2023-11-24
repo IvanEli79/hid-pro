@@ -1,0 +1,49 @@
+---
+import Paragraph from "../shared/Paragraph.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    idName?: string;
+    className?: string;
+}
+const { title, description, idName, className } = Astro.props;
+---
+
+<div
+    id={idName! ? idName : null}
+    data-info-card
+    class=`relative overflow-hidden
+           h-full
+           p-5 sm:p-6 lg:p-8
+           rounded-3xl
+           border border-box-border bg-box-bg shadow-lg shadow-box-shadow
+           ${className! ? className : ""}`
+>
+    <div class="flex flex-row
+                items-center">
+        <div
+            class="flex-none
+                    rounded-xl
+                   bg-indigo-400 dark:bg-green-500
+                    p-3
+                    text-heading-1
+                    w-max h-max
+                    lg:mr-5"
+        >
+            <slot name="icon" />
+        </div>
+
+        <h2
+            class="flex-1
+                   text-base md:text-xl font-semibold text-heading-2
+                   mt-2 mb-4"
+        >
+            {title}
+        </h2>
+    </div>
+
+    <Paragraph className="mt-4">
+        {description}
+    </Paragraph>
+</div>

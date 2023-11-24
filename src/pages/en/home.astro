@@ -1,0 +1,32 @@
+---
+import Hero from "/src/layouts/Hero.astro";
+
+import Title from "/src/components/shared/Title.astro";
+import HLText from "/src/components/shared/HLText.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+---
+
+<Hero>
+    <Title>
+        IT Solutions For All Your <HLText>Business</HLText> Needs
+    </Title>
+
+    <Paragraph variant="big">
+        Software can be a powerful instrument, but sometimes it can be complex
+        and challenging to choose (or even create) the right tool for your
+        unique needs.
+    </Paragraph>
+    
+    <Paragraph variant="big">
+        <HLText className="bg-gradient-to-bl">
+            <strong>That's when we come in handy!</strong>
+        </HLText>
+    </Paragraph>
+
+    <Paragraph variant="big">
+         We're the IT experts who can help you make technology work for you.
+    </Paragraph>
+
+    <LnkButton href="#about" text="Who We Are" />
+</Hero>

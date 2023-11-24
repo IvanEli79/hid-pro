@@ -1,0 +1,35 @@
+<svg
+   viewBox="0 0 128 128"
+   id="svg4">
+   <g
+      id="SVGRepo_iconCarrier"
+      transform="scale(0.25)">
+      <path
+         fill="#e05243"
+         d="M 260,348 123,381 V 131 l 137,32 z"
+         id="path1" />
+      <path
+         fill="#8c3123"
+         d="m 256,349 133,32 V 131 l -133,32 v 186"
+         id="path2" />
+      <g
+         fill="#e05243"
+         id="g2">
+         <path
+            id="a"
+            d="m 256,64 v 97 l 58,14 V 93 Z m 133,67 v 250 l 26,-13 V 143 Z m -133,77 v 97 l 58,-8 v -82 z m 58,129 -58,14 v 97 l 58,-29 z" />
+      </g>
+      <use
+         fill="#8c3123"
+         transform="rotate(180,256,256)"
+         id="use2" />
+      <path
+         fill="#5e1f18"
+         d="m 314,175 -58,11 -58,-11 58,-15 58,15"
+         id="path3" />
+      <path
+         fill="#f2b0a9"
+         d="m 314,337 -58,-11 -58,11 58,16 58,-16"
+         id="path4" />
+   </g>
+</svg>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+    idName?: string;
+    className?: string;
+}
+
+const { idName, className } = Astro.props;
+---
+
+<div id={idName! ? idName : ""}
+     data-subcontainer
+     class={`relative 
+             w-full 
+             mx-auto lg:mx-0
+             my-0 lg:my-auto
+             text-center lg:text-left
+             ${className! ? className : ""}`}>
+    <slot />
+</div>

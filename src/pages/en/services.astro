@@ -1,0 +1,80 @@
+---
+import Portfolio from "/src/layouts/Portfolio.astro";
+
+import Service from "/src/components/cards/Service.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import ServiceSwiper from "/src/components/shared/ServiceSwiper.astro";
+import Strip from "/src/components/shared/Strip.astro";
+import Checkmark from "/src/components/shared/Checkmark.astro";
+---
+
+<Portfolio>
+
+    <Strip slot="strip" className="w-full lg:w-1/5">
+        <Subtitle>Our Offer</Subtitle>
+        <Paragraph variant="mid">Some services in our catalogue that can be helpful to your business.</Paragraph>
+        <LnkButton href="#skills" text="How We Do It" />
+    </Strip>
+
+    <ServiceSwiper slot="swiper">
+        <Service title="IT Strategy Consulting" icon="bulb.svg" image="services-01.jpeg">
+            We offer assistance to design strategic IT plans based on
+            <strong>your organization’s goals and objectives</strong>
+             with an approach based on real practical solutions.<br/>
+             <br/>
+             <strong>Experience and Innovation at your disposition!</strong>
+        </Service>
+
+        <Service title="Tailored Software" icon="needle-thread.svg" image="services-02.jpeg">
+            We create software for <strong>your specific business rules.</strong><br />
+            <br />
+             For Mobile, Desktop or Server... <br />
+             Apps, Web Sites or APIs...<br />
+             Sales, Accounting, Administration, Logistics, Warehousing... <strong>You name it!</strong>
+        </Service>
+
+        <Service title="Software Testing & QA" icon="test-pipe.svg" image="services-03.jpeg">
+            These services allows you ensure if a software product meets 
+            <strong>your requirements</strong> 
+            and pass any test you dispose.<br />
+            <br />
+            <strong>A good way to improve the Quality of your processes!</strong>
+        </Service>
+
+        <Service title="Tech Support" icon="first-aid-kit.svg" image="services-04.jpeg">
+            We are able to offer Technical Support to any solution we had implemented on your organization.<br />
+            <br />
+            Who better to make any fix than the original creators?<br />
+            <br />
+            <strong>One less worry for you!</strong>
+        </Service>
+
+        <Service title="Software Architecture & Integration" icon="geometry.svg" image="services-05.jpeg">
+            A strategic approach to enable the <strong>flow of data</strong>
+            between disperse processes, systems and applications on your enterprise. <br />
+            <br />
+            <strong>When your systems really interact, efficiency really improves!</strong>
+        </Service>
+
+        <Service title="Nearshore - Offshore" icon="globe-filled.svg" image="services-06.jpeg">
+            It is possible to <strong>reduce costs</strong> by delegating your
+            software development needs to companies beyond your country. <br />
+            <br />
+            A Wider Pool of Talent at Cost-Effective Labor Force. <br />
+            <br />
+            <strong>We are your choice!</strong>
+        </Service>
+
+        <Service title="Assistance to Freelancers" icon="user-plus.svg" image="services-07.jpeg">
+            <Checkmark/> Are you a Freelancer and want to be considered in our project portfolio? <br />
+            <Checkmark/>Need to offer your services through an IT company?<br />
+            <Checkmark/>Help to estimate or quote your product?<br />
+            <Checkmark/>Support of a development team?<br />
+            <br />
+            <strong>Let us know your work!</strong>
+        </Service>
+    </ServiceSwiper>
+
+</Portfolio>

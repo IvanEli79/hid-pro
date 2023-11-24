@@ -1,0 +1,88 @@
+---
+import svgLogo from "/logos/hid.svg?raw";
+
+import Header from "/src/layouts/Header.astro";
+
+import Button from "/src/components/shared/HeaderBtn.astro";
+import NavItem from "/src/components/shared/Navitem.astro";
+import LangItem from "/src/components/shared/LangItem.astro";
+
+export interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+
+const navItems = [
+    {
+        href: "#",
+        text: "Home",
+    },
+    {
+        href: "#about",
+        text: "About Us",
+    },
+    {
+        href: "#portfolio",
+        text: "Services",
+    },
+    {
+        href: "#skills",
+        text: "Technologies",
+    },
+    {
+        href: "#features",
+        text: "Attributes",
+    },
+];
+
+const langItems = [
+    {
+        href: "/#",
+        text: "&#127474;&#127485; Español",
+    },
+    {
+        href: "/en#",
+        text: "&#127482;&#127480; English",
+    },
+];
+---
+
+<Header lang={lang}>
+
+    <Fragment slot="logo" set:html={svgLogo} />
+
+    <ul
+        slot="menu"
+        class="flex flex-col lg:flex-row
+               border-t border-box-border lg:border-t-0
+               px-6 lg:px-0
+               pt-6 lg:pt-0
+               gap-y-4
+               lg:gap-x-2 xl:gap-x-4 2xl:gap-x-10
+               text-heading-2
+               text-base xl:text-lg 2xl:text-xl
+               w-full
+               items-center lg:justify-center">
+        {
+            navItems.map((item) => {
+                return <NavItem {...item} />;
+            })
+        }
+    </ul>
+
+    <ul slot="langMenu" class="text-lg text-heading-2 xl:text-xl">
+        {
+            langItems.map((item) => {
+                return <LangItem {...item} />;
+            })
+        }
+    </ul>
+
+    <Button
+        slot="btnContact"
+        href="#cta"
+        text="Contact Us"
+        className="flex justify-center w-full sm:w-max xl:text-xl"
+    />
+</Header>

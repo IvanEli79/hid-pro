@@ -1,0 +1,219 @@
+---
+import svgLogo from "/logos/hid.svg?raw";
+import Container from "../components/shared/Container.astro";
+import LangItem from "../components/shared/LangItem.astro";
+
+const langItems = [
+    {
+        href: "/#",
+        text: "&#127474;&#127485; Español",
+    },
+    {
+        href: "/en#",
+        text: "&#127482;&#127480; English",
+    },
+];
+
+export interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<header data-header
+        class="fixed inset-x-0 top-0 z-50 py-6 w-full max-h-[100px]">
+
+    <Container>
+
+        <nav data-nav class="relative flex justify-between gap-2 w-full">
+
+            <div data-nav-logo class="min-w-max inline-flex relative">
+                <a href={lang === "es" ? "/" : "/en"} class="relative flex items-center">
+                    <div class="relative
+                               overflow-hidden 
+                               flex
+                               w-[108px] max-w-[108px]
+                               h-[64px] max-h-[64px]
+                               aspect-auto
+                               stroke-heading-1
+                               fill-heading-1">
+                        <Fragment set:html={svgLogo} />
+                    </div>
+                </a>
+            </div>
+
+            <div data-nav-overlay
+                 aria-hidden="true"
+                 class="fixed hidden lg:!hidden
+                        inset-0
+                        bg-box-bg bg-opacity-50
+                        backdrop-filter backdrop-blur-xl
+                        max-h-28">
+            </div>
+
+            <div data-navbar
+                 class="absolute lg:relative
+                        flex flex-col lg:flex-row
+                        overflow-hidden
+                        rounded-xl lg:rounded-none
+                        h-0 lg:!h-auto lg:scale-y-100
+                        gap-y-6 gap-x-4
+                        w-auto lg:w-full
+                        lg:justify-between lg:items-center
+                        top-full lg:top-0
+                        right-0
+                        bg-body lg:bg-transparent border-x border-x-box-border lg:border-x-0
+                        duration-300 ease-linear">
+
+                <div data-nav-menu class="lg:mr-0 lg:ml-auto">
+                    <slot name="menu" />
+                </div>
+
+                <div data-nav-contact-btn
+                     class="flex items-center
+                            lg:min-w-max sm:w-max w-full
+                            pb-6 lg:pb-0
+                            border-b border-box-bg lg:border-0
+                            px-6 lg:px-0">
+                    <slot name="btnContact" />
+                </div>
+            </div>
+
+            <div class="flex items-center
+                        min-w-max
+                        gap-x-3">
+                <div data-language-btn class="flex-col inline-block">
+                    <button data-toggle-lang
+                            class="flex relative
+                                   outline-none
+                                   text-heading-2
+                                   rounded-full
+                                   p-2 lg:p-3
+                                   border border-box-border"
+                            set:html={lang == "es"
+                            ? "&#127474;&#127485;"
+                            : "&#127482;&#127480;"}>
+                        <span class="sr-only"> Switch Language</span>
+                    </button>
+
+                    <div data-lang
+                         class="fixed hidden flex-col overflow-hidden
+                                h-fit
+                                rounded-xl
+                                gap-20
+                                bg-body lg:bg-transparent border-x border-x-box-border lg:border-x-0
+                                text-heading-3 text-base sm:text-lg lg:text-2xl">
+
+                        <ul slot="langMenu" class="text-lg text-heading-2 xl:text-xl">
+                        {
+                            langItems.map((item) => {
+                                return <LangItem {...item} />;
+                            })
+                        }
+                        </ul>
+
+                    </div>
+                </div>
+
+                <button data-switch-theme
+                        class="flex relative
+                               outline-none
+                               text-heading-2 rounded-full
+                               p-2 lg:p-3
+                               border border-box-border">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor"
+                         class="w-6 h-6 dark:flex hidden">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path>
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor"
+                         class="w-6 h-6 dark:hidden">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path>
+                    </svg>
+
+                    <span class="sr-only">Switch Theme</span>
+                </button>
+
+                <button data-toggle-nav
+                        data-open-nav="false"
+                        class="relative flex flex-col
+                               lg:hidden lg:invisible
+                               outline-none
+                               w-7 h-auto">
+
+                    <span id="line1" class="w-6 h-0.5 rounded-full bg-heading-2 transition-all duration-300 ease-linear"></span>
+
+                    <span id="line2" class="w-6 origin-center mt-1 h-0.5 rounded-ful bg-heading-2 transition-all duration-300 ease-linear"></span>
+
+                    <span id="line3" class="w-6 mt-1 h-0.5 rounded-ful bg-heading-2 transition-all duration-300 ease-linear"></span>
+
+                    <span class="sr-only">togglenav</span>
+
+                </button>
+            </div>
+        </nav>
+    </Container>
+</header>
+
+<script>
+    const header = document.querySelector("[data-header]");
+    /* Validación por si se entra directo a una seccion */
+    if (window.scrollY >= 100) {
+        header!.classList.add("active");
+    } else {
+        header!.classList.remove("active");
+    }
+    /* Validación por scroll */
+    window.addEventListener("scroll", function () {
+        if (window.scrollY >= 100) {
+            header!.classList.add("active");
+        } else {
+            header!.classList.remove("active");
+        }
+    });
+</script>
+
+<script>
+    const toggleLangMenu = document.querySelector(
+        "[data-toggle-lang]",
+    ) as HTMLButtonElement;
+    const langMenu = document.querySelector("[data-lang]") as HTMLDivElement;
+
+    if (toggleLangMenu) {
+        toggleLangMenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (langMenu) {
+                if (langMenu.classList.contains("hidden")) {
+                    langMenu.classList.remove("hidden");
+                } else {
+                    langMenu.classList.add("hidden");
+                }
+            }
+        });
+    }
+</script>
+
+<style>
+    header {
+        background-color: transparent;
+        transition: 0.45s cubic-bezier(0.33, 0.85, 0.56, 1.02);
+    }
+    header.active {
+        background-color: var(--color-bg);
+        transition-duration: 0.35s;
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+export interface Props {
+    idName?: string;
+    className?: string;
+}
+
+const { idName, className } = Astro.props;
+---
+
+<div
+    id={idName! ? idName : null}
+    data-strip
+    class=`relative 
+            mx-auto 
+            w-full 
+            items-center lg:items-start
+            text-center lg:text-left
+            ${className! ? className : ""}`
+>
+    <slot />
+</div>

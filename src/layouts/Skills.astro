@@ -1,0 +1,648 @@
+---
+import Section from "../components/shared/Section.astro";
+import SkillItem from "../components/shared/SkillItem.astro";
+
+const iconItems = [
+    /* PLATFORMS */
+    {
+        icon: "windows.svg",
+        text: "Windows",
+        wiki: "Microsoft_Windows",
+        pgId: "18890",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "linux.svg",
+        text: "Linux",
+        wiki: "GNU_Linux",
+        pgId: "6097297",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "macos.svg",
+        text: "MacOs",
+        wiki: "MacOS",
+        pgId: "20640",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "android.svg",
+        text: "Android",
+        wiki: "Android_(operating_system)",
+        pgId: "12610483",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "ios.svg",
+        text: "iOS",
+        wiki: "IOS",
+        pgId: "16161443",
+        actv: true,
+        indx: 0,
+    },
+    /* LANGUAGES */
+    {
+        icon: "c.svg",
+        text: "C Programming Language",
+        wiki: "C_(Programming_Language)",
+        pgId: "6021",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "cpp.svg",
+        text: "C++",
+        wiki: "C%2B%2B",
+        pgId: "72038",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "csharp.svg",
+        text: "C#",
+        wiki: "C_Sharp_(programming_language)",
+        pgId: "2356196",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "css3.svg",
+        text: "CSS 3",
+        wiki: "CSS",
+        pgId: "23290197",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "graphql.svg",
+        text: "GraphQL",
+        wiki: "GraphQL",
+        pgId: "50353761",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "html5.svg",
+        text: "HTML 5",
+        wiki: "HTML",
+        pgId: "13191",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "java.svg",
+        text: "Java",
+        wiki: "Java_(programming_language)",
+        pgId: "15881",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "js.svg",
+        text: "JavaScript",
+        wiki: "JavaScript",
+        pgId: "9845",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "kotlin.svg",
+        text: "Kotlin",
+        wiki: "Kotlin_(programming_language)",
+        pgId: "41819039",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "php.svg",
+        text: "PhP",
+        wiki: "PHP",
+        pgId: "24131",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "python.svg",
+        text: "Python",
+        wiki: "Python_(programming_language)",
+        pgId: "23862",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "r.svg",
+        text: "R Programming Language",
+        wiki: "R_(programming_language)",
+        pgId: "376707",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "swift.svg",
+        text: "Swift",
+        wiki: "Swift_(programming_language)",
+        pgId: "42946389",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "ts.svg",
+        text: "TypeScript",
+        wiki: "TypeScript",
+        pgId: "8157205",
+        actv: true,
+        indx: 0,
+    },
+    /* WEB FRAMEWORKS (FRONTEND & BACKEND) */
+    {
+        icon: "angular.svg",
+        text: "Angular",
+        wiki: "Angular_(web_framework)",
+        pgId: "53385622",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "astro.svg",
+        text: "Astro",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "bootstrap.svg",
+        text: "Bootstrap",
+        wiki: "Bootstrap_(front-end_framework)",
+        pgId: "34973010",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "flutter.svg",
+        text: "Flutter",
+        wiki: "Flutter_(software)",
+        pgId: "54699721",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "jquery.svg",
+        text: "jQuery",
+        wiki: "jQuery",
+        pgId: "7672626",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "nestjs.svg",
+        text: "NestJS",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "nodejs.svg",
+        text: "Node.js",
+        wiki: "Node.js",
+        pgId: "26415635",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "react.svg",
+        text: "React Native",
+        wiki: "React_Native",
+        pgId: "48720974",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "tailwindcss.svg",
+        text: "Tailwind CSS",
+        wiki: "Tailwind_CSS",
+        pgId: "71548671",
+        actv: true,
+        indx: 0,
+    },
+    /* CLOUD SERVICES */
+    {
+        icon: "amazon-s3.svg",
+        text: "Amazon Simple Storage Service",
+        wiki: "Amazon_S3",
+        pgId: "5962343",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "azure.svg",
+        text: "Azure Cloud Services",
+        wiki: "Microsoft_Azure",
+        pgId: "19961416",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "wasabi.svg",
+        text: "wasabi",
+        wiki: "Wasabi_Technologies",
+        pgId: "58995181",
+        actv: true,
+        indx: 0,
+    },
+    /* CONTROL VERSION SYSTEMS */
+    {
+        icon: "git.svg",
+        text: "GIT",
+        wiki: "Git",
+        pgId: "1771747",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "github.svg",
+        text: "GitHub",
+        wiki: "GitHub",
+        pgId: "18545292",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "vs-tfs.svg",
+        text: "Team Foundation Server",
+        wiki: "Team_Foundation_Server",
+        pgId: "11847635",
+        actv: true,
+        indx: 0,
+    },
+    /* DATABASES */
+    {
+        icon: "db2.svg",
+        text: "IBM DB2",
+        wiki: "IBM_Db2",
+        pgId: "142983",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "dynamodb.svg",
+        text: "Amazon DynamoDB",
+        wiki: "Amazon_DynamoDB",
+        pgId: "34445650",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "mongodb.svg",
+        text: "MongoDB",
+        wiki: "MongoDB",
+        pgId: "21855450",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "mysql.svg",
+        text: "MySQL",
+        wiki: "MySQL",
+        pgId: "19545",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "oracle.svg",
+        text: "Oracle DB",
+        wiki: "Oracle_Database",
+        pgId: "323725",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "postgresql.svg",
+        text: "PostgreSQL",
+        wiki: "PostgreSQL",
+        pgId: "23824",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "presto.svg",
+        text: "PrestoDB/PrestoSQL",
+        wiki: "Presto_(SQL_query_engine)",
+        pgId: "48384890",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "sqlite.svg",
+        text: "SQLite",
+        wiki: "SQLite",
+        pgId: "244884",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "sqlserver.svg",
+        text: "SQL Server",
+        wiki: "Microsoft_SQL_Server",
+        pgId: "13989994",
+        actv: true,
+        indx: 0,
+    },
+    /* BI */
+    {
+        icon: "apache-impala.svg",
+        text: "Apache Impala",
+        wiki: "Apache_Impala",
+        pgId: "40147148",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "apache-spark.svg",
+        text: "Apache Spark",
+        wiki: "Apache_Spark",
+        pgId: "42164234",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "geckoboard.svg",
+        text: "Geckoboard",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "google-looker-studio.svg",
+        text: "Google Looker Studio",
+        wiki: "Looker_Studio",
+        pgId: "67464787",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "metabase.svg",
+        text: "Metabase",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "microsoft-powerbi.svg",
+        text: "Microsoft Power BI",
+        wiki: "Microsoft_Power_BI",
+        pgId: "50418026",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "tableau.svg",
+        text: "Tableau",
+        wiki: "Tableau_Software",
+        pgId: "19547325",
+        actv: true,
+        indx: 0,
+    },
+    /* OTHERS */
+    {
+        icon: "airbyte.svg",
+        text: "AirByte",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "apache-jmeter.svg",
+        text: "Apache JMeter",
+        wiki: "Apache_JMeter",
+        pgId: "1389448",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "apache-airflow.svg",
+        text: "Apache Airflow",
+        wiki: "Apache_Airflow",
+        pgId: "61928892",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "appium.svg",
+        text: "Appium",
+        wiki: "Appium",
+        pgId: "51954801",
+        actv: true,
+        indx: 0,
+    },
+
+    {
+        icon: "cucumber.svg",
+        text: "Cucumber BDD",
+        wiki: "Cucumber_(software)",
+        pgId: "32539255",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "docker.svg",
+        text: "Docker",
+        wiki: "Docker_(software)",
+        pgId: "40149201",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "dot-net.svg",
+        text: ".NET Framework",
+        wiki: ".NET_Framework",
+        pgId: "25143203",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "dot-net-core.svg",
+        text: ".NET Core",
+        wiki: ".NET",
+        pgId: "45400268",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "elasticsearch.svg",
+        text: "elasticsearch",
+        wiki: "Elasticsearch",
+        pgId: "33179123",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "debezium.svg",
+        text: "Debezium",
+        wiki: "",
+        pgId: null,
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "bigtable.svg",
+        text: "Google BigTable",
+        wiki: "Bigtable",
+        pgId: "5919973",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "bigquery.svg",
+        text: "Google BigQuery",
+        wiki: "BigQuery",
+        pgId: "30352473",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "cloud-functions.svg",
+        text: "Google Cloud Functions",
+        wiki: "Google_Cloud_Platform",
+        pgId: "42411494&1",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "dataproc.svg",
+        text: "Google Dataproc",
+        wiki: "Google_Cloud_Platform",
+        pgId: "42411494&2",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "google-cloud-dataflow.svg",
+        text: "Google Cloud Dataflow",
+        wiki: "Google_Cloud_Dataflow",
+        pgId: "60042361",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "google-cloud-pubsub.svg",
+        text: "Google Cloud Pub/Sub",
+        wiki: "Google_Cloud_Platform",
+        pgId: "42411494&3",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "postman.svg",
+        text: "Postman",
+        wiki: "Postman_(software)",
+        pgId: "70181938",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "selenium.svg",
+        text: "Selenium",
+        wiki: "Selenium_(software)",
+        pgId: "4544097",
+        actv: true,
+        indx: 0,
+    },
+    {
+        icon: "testng.svg",
+        text: "TestNG",
+        wiki: "TestNG",
+        pgId: "1608521",
+        actv: true,
+        indx: 0,
+    } /* */,
+];
+
+export interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!-- SECTION SKILLS -->
+<Section idName="skills" variant="content" containerLgVariant="reverse">
+    <slot name="strip" />
+
+    <div
+        id="skill-grid"
+        class="flex-1
+                grid
+                
+                grid-cols-[repeat(auto-fit,_minmax(64px,_1fr))]
+                lg:grid-cols-[repeat(auto-fit,_minmax(80px,_1fr))]
+                xl:grid-cols-[repeat(auto-fit,_minmax(96px,_1fr))]
+                
+                lg:auto-rows-auto
+                
+                lg:max-h-full lg:overflow-hidden
+                gap-4 lg:gap-6
+                pb-4 lg:pb-6"
+    >
+        {
+            iconItems.map((item, index) => {
+                if (item.actv == true) {
+                    item.indx = index;
+                    return <SkillItem {...item} />;
+                }
+            })
+        }
+    </div>
+</Section>
+
+<script>
+    import anime from "animejs/lib/anime.js";
+
+    const images = document.querySelectorAll(".skill-item");
+
+    const grid = document.querySelector("#skill-grid");
+    const gridComputedStyle = window.getComputedStyle(grid!);
+
+    images.forEach((image, index) => {
+        image.addEventListener("click", (e) => {
+            anime({
+                targets: ".skill-item",
+                autoplay: true,
+
+                scale: [
+                    { value: 1.35, easing: "easeOutSine", duration: 250 },
+                    { value: 1, easing: "easeInOutQuad", duration: 500 },
+                ],
+                translateY: [
+                    { value: -15, easing: "easeOutSine", duration: 250 },
+                    { value: 0, easing: "easeInOutQuad", duration: 500 },
+                ],
+                opacity: [
+                    { value: 0.5, easing: "easeOutSine", duration: 250 },
+                    { value: 1, easing: "easeInOutQuad", duration: 500 },
+                ],
+
+                delay: anime.stagger(200, {
+                    grid: [
+                        gridComputedStyle
+                            .getPropertyValue("grid-template-columns")
+                            .split(" ").length,
+                        gridComputedStyle
+                            .getPropertyValue("grid-template-rows")
+                            .split(" ").length,
+                    ],
+                    from: index,
+                }),
+            });
+        });
+    });
+</script>

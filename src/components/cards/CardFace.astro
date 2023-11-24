@@ -1,0 +1,67 @@
+---
+import Paragraph from "../shared/Paragraph.astro";
+import svgForward from "../../assets/icons/arrow-forward-double.svg?raw";
+import InfoHeader from "../blocks/InfoHeader.astro";
+
+export interface Props {
+    title: string;
+    icon: string;
+    variant: "front" | "back";
+    idName?: string;
+    className?: string;
+}
+
+const { title, icon, variant, idName, className } = Astro.props;
+---
+
+<div id={idName! ? idName : null}
+     data-cardface 
+     class=`${variant==="front"? "cardFront": "cardBack"}
+            flex flex-col
+            p-4 sm:p-5 lg:p-7
+            pb-6 sm:pb-7 lg:pb-9
+            gap-3 sm:gap-4 lg:gap-6
+            rounded-3xl border border-box-border bg-box-bg
+            shadow-lg shadow-box-shadow
+            min-w-full w-full
+            min-h-full h-full
+            overflow-hidden
+            ${className! ? className : ""}`>
+
+    <InfoHeader title={title} icon={icon} iconBgVariant="tl" />
+
+    <div class="flex flex-1 h-full items-center">
+        <Paragraph>
+            <slot />
+        </Paragraph>
+    </div>
+
+    <div class="absolute flex-none w-16 bottom-2 lg:bottom-5 -right-7">
+        <Fragment set:html={svgForward} />
+    </div>
+    
+    <span
+        class="circle absolute w-1 aspect-square -bottom-16 -right-16 bg-primary/20 rounded-full overflow-hidden"
+    ></span>
+</div>
+
+<style is:global>
+    [data-cardface] {
+        backface-visibility: hidden;
+        transform: translateZ(-20px);
+    }
+
+    [data-cardface]:hover > .circle {
+        transition: width 350ms ease;
+        -moz-transition: width 350ms ease;
+        -ms-transition: width 350ms ease;
+        -o-transition: width 350ms ease;
+
+        width: 8rem;
+    }
+
+    [data-cardface].cardBack {
+        top: 0px;
+        transform: translateZ(20px) rotateY(180deg);
+    }
+</style>

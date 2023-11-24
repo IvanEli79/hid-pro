@@ -1,0 +1,58 @@
+---
+import About from "/src/layouts/About.astro";
+
+import Subtitle from "/src/components/shared/Subtitle.astro";
+import HLText from "/src/components/shared/HLText.astro";
+import Paragraph from "/src/components/shared/Paragraph.astro";
+import FlipCard from "/src/components/cards/FlipCard.astro";
+import LnkButton from "/src/components/shared/LnkButton.astro";
+import CardDeck from "/src/components/cards/CardDeck.astro";
+import CardFace from "/src/components/cards/CardFace.astro";
+---
+
+<About>
+    <Subtitle>
+        We are a <HLText>Team</HLText> with several combined years of 
+        <HLText className="bg-gradient-to-tl">Experience</HLText> in the 
+        <HLText className="bg-gradient-to-br">Tech World</HLText>
+    </Subtitle>
+
+    <Paragraph variant="mid">
+        Our <i>analysts</i>, <i>designers</i> and <i>engineers</i> have the knowledge 
+        not only in several technologies (new and legacy) but also in diverse
+        business rules, methodologies and market tendencies, to
+        get the best results for <HLText><strong>You</strong></HLText>.
+    </Paragraph>
+
+    <CardDeck>
+        <FlipCard>
+            <CardFace icon="mission.svg" title="Mission" variant="front">
+                To empower businesses of any sizes and lines with 
+                <strong>innovative software solutions</strong>, 
+                that help our customer to reach their <strong>goals</strong>.
+            </CardFace>
+            <CardFace icon="objectives.svg" title="Objectives" variant="back">
+                Offer <strong>optimal software solutions</strong>, with 
+                <i>high-performance</i> and <i>quality</i> in compliance of our 
+                <i>customer requirements</i>.
+            </CardFace>
+        </FlipCard>
+        <FlipCard>
+            <CardFace icon="vision.svg" title="Vision" variant="front">
+                To be one leading provider of software solutions that <strong
+                    >transform</strong
+                > the way businesses operate.
+            </CardFace>
+            <CardFace icon="values.svg" title="Values" variant="back">
+                Embrace <i>Innovation</i>, <i>Curiosity</i>, <i>Learning</i>, <i
+                    >Collaboration</i
+                >, <i>Integrity</i> and <i>Passion</i> for what each one do.
+                <br /><br />
+                <strong>Talent</strong> goes beyond age, gender, race, beliefs
+                or origins.
+            </CardFace>
+        </FlipCard>
+    </CardDeck>
+
+    <LnkButton href="#portfolio" text="What We Offer" />
+</About>

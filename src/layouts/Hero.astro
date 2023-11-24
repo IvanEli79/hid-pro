@@ -1,0 +1,35 @@
+---
+import Section from "../components/shared/Section.astro";
+import Subcontainer from "../components/shared/Subcontainer.astro";
+---
+
+<!-- SECTION HERO -->
+<Section idName="#">
+    <!-- Hero Background Smudges -->
+    <div data-hero-smudges slot="uncontained">
+        <span
+            class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-green-400 absolute -top-10 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-70 skew-x-12 rotate-90"
+        ></span>
+        <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0">
+            <span
+                class="absolute -left-6 md:left-4 lg:-left-10 top-24 lg:top-44 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"
+            ></span>
+            <span
+                class="absolute -right-1 lg:right-4 -bottom-6 lg:bottom-8 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80"
+            ></span>
+        </div>
+    </div>
+
+    <!-- Hero Container -->
+    <Subcontainer className="flex-1">
+        <slot />
+    </Subcontainer>
+
+    <Subcontainer className="flex-1 flex my-0 justify-center">
+        <img src="/images/hero.jpeg"
+             alt="Hero image"
+             width="1024"
+             height="1024"
+             class="object-cover rounded-3xl lg:w-full lg:h-full max-h-96 lg:max-h-[550px] lg:max-w-fit" />
+    </Subcontainer>
+</Section>

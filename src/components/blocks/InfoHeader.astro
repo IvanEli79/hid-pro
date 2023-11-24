@@ -1,0 +1,40 @@
+---
+import HLText from "../shared/HLText.astro";
+
+export interface Props {
+    title: string;
+    icon?: string;
+    iconBgVariant?: "tl" | "tr" | "bl" | "br";
+    className?: string;
+}
+
+const { title, icon, iconBgVariant, className } = Astro.props;
+
+const { default: innerHTMLicon } = await import(`../../assets/icons/${icon! ? icon.replace(".svg", "") : "paperplane"}.svg?raw`);
+
+const getThemeStyle = (iconBgVariant?: "tl" | "tr" | "bl" | "br") => {
+
+    const bgColor = "from-indigo-500 via-primary via-15% to-green-400 ";
+
+    if (iconBgVariant === "tl") { return ( bgColor + "bg-gradient-to-tl" ); }
+    if (iconBgVariant === "tr") { return ( bgColor + "bg-gradient-to-tr" ); }
+    if (iconBgVariant === "bl") { return ( bgColor + "bg-gradient-to-bl" ); }
+    if (iconBgVariant === "br") { return ( bgColor + "bg-gradient-to-br" ); }
+
+    return ("bg-gray-300 dark:bg-gray-950");
+};
+---
+
+<div class=`flex-none
+            flex flex-row
+            gap-2 sm:gap-4 lg:gap-6
+            ${className! ? className : ""}`>
+    
+    <div class=`flex-none rounded-xl ${getThemeStyle(iconBgVariant)} p-3 text-heading-1 w-max h-full`>
+        <Fragment set:html={innerHTMLicon} />
+    </div>
+
+    <h2 class="flex-1 text-base text-left md:text-xl font-semibold text-heading-2 my-auto">
+        <HLText>{title}</HLText>
+    </h2>
+</div>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+    idName?: string;
+    className?: string;
+}
+
+const { idName, className } = Astro.props;
+---
+<div
+    id={idName! ? idName : null}
+    data-card-deck
+    class=`my-3
+            grid grid-cols-2
+            items-center
+            gap-4 lg:gap-6
+            w-full
+            max-h-max lg:max-h-full
+            max-w-3xl md:max-w-[none]
+            overflow-hidden
+            ${className! ? className : ""}`
+>
+    <slot />
+</div>

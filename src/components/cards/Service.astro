@@ -1,0 +1,48 @@
+---
+import InfoHeader from "../blocks/InfoHeader.astro";
+import Paragraph from "../shared/Paragraph.astro";
+
+export interface Props {
+    title: string;
+    icon?: string;
+    image: string;
+    idName?: string;
+    className?: string;
+}
+
+const { title, icon, image, idName, className } = Astro.props;
+
+/* const { default: innerHTMLimage } = await import(`../../assets/images/${image! ? image.replace(".svg", "") : "balin_cubes"}.svg?raw`); */
+const imagePath = `/images/${image}`;
+---
+
+<div id={idName! ? idName : null}
+     data-swiper-slide
+     class=`swiper-slide
+            relative flex flex-col
+            p-5 sm:p-6 lg:p-7
+            gap-2 sm:gap-4 lg:gap-6
+            rounded-3xl
+            border border-box-border bg-box-bg
+            shadow-lg shadow-box-shadow
+            overflow-hidden
+            ${className! ? className : ""}`>
+    
+    <InfoHeader title={title} icon={icon}/>
+    
+    <div class="relative flex flex-grow flex-col lg:flex-col-reverse min-h-[92%]">
+
+        <div class="flex-1 flex-grow align-middle inline-flex max-h-[40vh] lg:max-h-full">
+            <!--Fragment set:html={innerHTMLimage} /-->
+            <img src=`/images/${image}` alt="Service Image" class="object-cover rounded-2xl"/>
+        </div>
+
+        <Paragraph variant="small" className="flex-none">
+            <slot />
+        </Paragraph>
+    </div>
+
+    <span
+        class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"
+    ></span>
+</div>
