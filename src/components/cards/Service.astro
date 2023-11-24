@@ -11,9 +11,6 @@ export interface Props {
 }
 
 const { title, icon, image, idName, className } = Astro.props;
-
-/* const { default: innerHTMLimage } = await import(`../../assets/images/${image! ? image.replace(".svg", "") : "balin_cubes"}.svg?raw`); */
-const imagePath = `/images/${image}`;
 ---
 
 <div id={idName! ? idName : null}
@@ -34,7 +31,7 @@ const imagePath = `/images/${image}`;
 
         <div class="flex-1 flex-grow align-middle inline-flex max-h-[40vh] lg:max-h-full">
             <!--Fragment set:html={innerHTMLimage} /-->
-            <img src=`/images/${image}` alt="Service Image" class="object-cover rounded-2xl"/>
+            <img src=`${import.meta.env.BASE_URL}/images/${image}` alt="Service Image" class="object-cover rounded-2xl"/>
         </div>
 
         <Paragraph variant="small" className="flex-none">

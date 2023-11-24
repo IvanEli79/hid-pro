@@ -5,11 +5,11 @@ import LangItem from "../components/shared/LangItem.astro";
 
 const langItems = [
     {
-        href: "/#",
+        href: `${import.meta.env.BASE_URL}/#`,
         text: "&#127474;&#127485; Español",
     },
     {
-        href: "/en#",
+        href: `${import.meta.env.BASE_URL}/en#`,
         text: "&#127482;&#127480; English",
     },
 ];
@@ -29,7 +29,7 @@ const { lang } = Astro.props;
         <nav data-nav class="relative flex justify-between gap-2 w-full">
 
             <div data-nav-logo class="min-w-max inline-flex relative">
-                <a href={lang === "es" ? "/" : "/en"} class="relative flex items-center">
+                <a href={lang === "es" ? `${import.meta.env.BASE_URL}/` : `${import.meta.env.BASE_URL}/en`} class="relative flex items-center">
                     <div class="relative
                                overflow-hidden 
                                flex
