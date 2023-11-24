@@ -7,4 +7,5 @@ export default defineConfig({
   integrations: [tailwind()],
   site: 'https://ivaneli79.github.io',
   base: '/hid-pro',
+  trailingSlash: "never",
 });
