@@ -34,6 +34,7 @@ const getThemeStyle = (variant?: "screen"|"content"|"last") => {
     class={`relative flex 
             ${getThemeStyle(variant)} 
             min-w-screen lg:w-screen
+            lg:min-h-[768px]
             lg:overflow-hidden
             pt-28 
             ${className! ? className : ""}`}

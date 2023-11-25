@@ -1,12 +1,15 @@
 <div data-service-swiper 
      class="swiper mySwiper w-full h-full flex flex-1"
      style={{"--swiper-pagination-bullet-inactive-color": "var(--heading-3)",
-             "--swiper-pagination-bullet-inactive-opacity": "0.7",
+             "--swiper-pagination-bullet-inactive-opacity": "0.7", 
             }}>
-    <div class="swiper-wrapper max-h-[95%]">
+    
+    <div class="swiper-wrapper max-h-[94%]">
         <slot />
     </div>
+
     <div class="swiper-pagination"></div>
+    
     <div class="hidden lg:block">
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>

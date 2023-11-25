@@ -30,7 +30,14 @@ const getThemeStyle = (iconBgVariant?: "tl" | "tr" | "bl" | "br") => {
             gap-2 sm:gap-4 lg:gap-6
             ${className! ? className : ""}`>
     
-    <div class=`flex-none rounded-xl ${getThemeStyle(iconBgVariant)} p-3 text-heading-1 w-max h-full`>
+    <div class=`flex-none 
+                rounded-xl 
+                p-3 
+                mt-0 mb-auto
+                ${getThemeStyle(iconBgVariant)}  
+                text-heading-1 
+                aspect-square
+                w-max `>
         <Fragment set:html={innerHTMLicon} />
     </div>
 

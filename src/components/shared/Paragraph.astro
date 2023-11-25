@@ -1,41 +1,53 @@
 ---
 export interface Props {
     className?: string;
-    variant?: "big" | "mid" | "small" ;
+    variant?: "big" | "mid" | "small" | "xsmall" ;
 }
 
 const { className, variant } = Astro.props;
 
-const getThemeStyle = (variant?: "big" | "mid" | "small") => {
+const getThemeStyle = (variant?: "big" | "mid" | "small" | "xsmall") => {
     if (variant === "big") {
         return (
             "my-[3vh] sm:my-[4vh] lg:my-[5vh] " +
-            "text-base sm:text-lg/tight md:text-xl/tight lg:text-2xl/tight xl:text-3xl/tight"
+            "text-base sm:text-lg/tight lg:text-xl/tight xl:text-2xl/tight 2xl:text-2xl/tight"
+            /* "text-base sm:text-lg/tight md:text-xl/tight lg:text-2xl/tight xl:text-3xl/tight" */
         );
     }
     if (variant === "mid") {
         return (
             "my-[2vh] sm:my-[3vh] lg:my-[4vh] " +
-            "text-sm sm:text-base/tight md:text-lg/tight lg:text-xl/tight xl:text-2xl/tight"
+            "text-sm sm:text-base/tight lg:text-lg/tight xl:text-xl/tight 2xl:text-2xl/tight"
+            /* "text-sm sm:text-base/tight md:text-lg/tight lg:text-xl/tight xl:text-2xl/tight" */
         );
     }
 
     if (variant === "small") {
         return (
             "my-[1vh] sm:my-[2vh] lg:my-[3vh] " +
-            "text-sm sm:text-sm/tight md:text-base/tight lg:text-lg/tight xl:text-xl/tight"
+            "text-sm sm:text-sm/tight lg:text-base/tight xl:text-lg/tight 2xl:text-xl/tight"
+            /* "text-sm sm:text-sm/tight md:text-base/tight lg:text-lg/tight xl:text-xl/tight" */
+        )    
+    }
+
+    if (variant === "xsmall") {
+        return (
+            "mt-2 mb-4 " +
+            "text-xs sm:text-xs/tight lg:text-sm/tight xl:text-base/tight 2xl:text-lg/tight"
+            /* "text-sm sm:text-sm/tight md:text-base/tight lg:text-lg/tight xl:text-xl/tight" */
         )    
     }
 
     return (
-        "text-sm sm:text-sm/tight md:text-base/tight lg:text-lg/tight xl:text-xl/tight"
+        "text-sm sm:text-sm/tight lg:text-base/tight xl:text-lg/tight 2xl:text-xl/tight"
+        /* "text-sm sm:text-sm/tight md:text-base/tight lg:text-lg/tight xl:text-xl/tight" */
     );
 };
 ---
 
 <p data-paragraph
    class={`relative flex-1
-           text-heading-3
+           ${getThemeStyle(variant)}
+           text-heading-3 
            text-center lg:text-left
-           ${getThemeStyle(variant)} 
            ${className! ? className : ""}`}><slot /></p>

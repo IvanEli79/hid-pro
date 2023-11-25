@@ -8,38 +8,56 @@ export interface Props {
     image: string;
     idName?: string;
     className?: string;
+    paragraphVariant?: "big" | "mid" | "small" | "xsmall" ;
 }
 
-const { title, icon, image, idName, className } = Astro.props;
+const { title, icon, image, idName, className, paragraphVariant } = Astro.props;
 ---
 
 <div id={idName! ? idName : null}
      data-swiper-slide
-     class=`swiper-slide
-            relative flex flex-col
-            p-5 sm:p-6 lg:p-7
-            gap-2 sm:gap-4 lg:gap-6
-            rounded-3xl
-            border border-box-border bg-box-bg
-            shadow-lg shadow-box-shadow
-            overflow-hidden
-            ${className! ? className : ""}`>
-    
-    <InfoHeader title={title} icon={icon}/>
-    
-    <div class="relative flex flex-grow flex-col lg:flex-col-reverse min-h-[92%]">
+     class="swiper-slide" >
+     
+    <div class=`flex flex-col
+                h-full
+                p-5 sm:p-6 lg:p-7
+                gap-2 sm:gap-4 lg:gap-0
+                rounded-3xl
+                border border-box-border bg-box-bg
+                shadow-lg shadow-box-shadow
+                overflow-hidden
+                ${className! ? className : ""}`>
 
-        <div class="flex-1 flex-grow align-middle inline-flex max-h-[40vh] lg:max-h-full">
-            <!--Fragment set:html={innerHTMLimage} /-->
-            <img src=`${import.meta.env.BASE_URL}/images/${image}` alt="Service Image" class="object-cover rounded-2xl"/>
+        <InfoHeader title={title} icon={icon}/>
+        
+        <div class="flex
+                    flex-col-reverse lg:flex-col
+                    
+                    w-full h-full">
+
+            <Paragraph variant={paragraphVariant! ? paragraphVariant : "small"}>
+                <slot />
+            </Paragraph>
+        
+
+            <div class="flex-none
+                        align-middle 
+                        justify-center
+                        inline-flex lg:flex
+                        max-w-full
+                        max-h-[40vh] lg:max-h-full">
+                
+                <img src=`${import.meta.env.BASE_URL}/images/${image}` 
+                     alt="Service Image" 
+                     class="object-cover lg:object-contain
+                            flex-initial
+                            rounded-2xl"/>
+            </div>
+
         </div>
 
-        <Paragraph variant="small" className="flex-none">
-            <slot />
-        </Paragraph>
-    </div>
-
-    <span
-        class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"
-    ></span>
+        <span
+            class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"
+        ></span>
+    </div>    
 </div>
