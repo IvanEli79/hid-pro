@@ -6,6 +6,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://ivaneli79.github.io',
-  base: '.',
+  //base: '.',
+  base: 'hid-pro',
   trailingSlash: "ignore",
 });

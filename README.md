@@ -1,14 +1,19 @@
-<h1>AgenceX Landing page</h1>
+<h1>HID-Prology Landing page</h1>
 
-A simple landing page for a digital agency
+A simple landing page for a digital development agency
+
+Based on AgenceX Template:
 
 ![AgenceX light Theme](./screens/demoLight.webp)
 ![AgenceX Dark Theme](./screens/demoDark.webp)
 
 
 ## Tools
+- AstroJs v5.10.1
 - TailwindCSS v3.3
-- AstroJs v3
+- AstroJs/TailWind v5.0
+- Animejs v3.2
+- Swiper v11.0
 
 
 ## 🚀 Project Structure
@@ -18,23 +23,63 @@ Inside of your Astro project, you'll see the following folders and files:
 ```
 /
 ├── public/
-│   ├── images/
+│   ├── images/*
 │   ├── logos/*
-│   └── favicon.svg
+│   ├── astroicon.svg
+│   ├── favicon.svg
+│   └── gunshot.svg
 ├── src/
+│   ├── assets/
+│   │   ├── icons/*
+│   │   ├── images/*
+│   │   └── logos/*
 │   ├── components/
 │   │   ├── blocks/*
 │   │   ├── cards/*
-│   │   ├── elements/*
-│   │   ├── sections/*
 │   │   ├── shared/*
 │   ├── layouts/
-│   │   └── Layout.astro
+│   │   ├── About.astro
+│   │   ├── Brands.astro
+│   │   ├── CallToAction.astro
+│   │   ├── Features.astro
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   ├── HeaderError.astro
+│   │   ├── Hero.astro
+│   │   ├── Layout.astro
+│   │   ├── Portfolio.astro
+│   │   ├── Skills.astro
+│   │   └── Stats.astro
 │   └── pages/
-│       └── index.astro
+│       ├── en
+│       │   ├── 404.astro
+│       │   ├── about-us.astro
+│       │   ├── attributes.astro
+│       │   ├── clients.astro
+│       │   ├── contact-us.astro
+│       │   ├── foot.astro
+│       │   ├── head.astro
+│       │   ├── home.astro
+│       │   ├── index.astro
+│       │   ├── services.astro
+│       │   ├── statistics.astro
+│       │   └── technologies.astro
+│       ├── 404.astro
+│       ├── about-us.astro
+│       ├── attributes.astro
+│       ├── clients.astro
+│       ├── contact-us.astro
+│       ├── foot.astro
+│       ├── head.astro
+│       ├── home.astro
+│       ├── index.astro
+│       ├── services.astro
+│       ├── statistics.astro
+│       └── technologies.astro
+├── astro.config.cjs
 ├── package.json
-└── tailwind.config.cjs
-```
+├── tailwind.config.cjs
+└── tsconfig.json
 
 
 ## 🧞 Commands
